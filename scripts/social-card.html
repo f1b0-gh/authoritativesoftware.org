@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Authoritative Software share card</title>
+<link rel="stylesheet" href="../resources/design-system/tokens.css"><link rel="stylesheet" href="../src/styles/fonts.css">
+<style>
+* { box-sizing: border-box; } body { margin: 0; width: 1200px; height: 630px; padding: 32px 72px; background: var(--paper); color: var(--ink); }
+header { display: flex; gap: 30px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 32px; font: 400 34px var(--font-serif); letter-spacing: -.02em; }
+header img { width: 78px; height: auto; }
+h1 { font: normal 72px/1.08 var(--font-serif); letter-spacing: -2px; margin: 32px 0 24px; } em { color: var(--accent); } p { margin: 0; font: 22px/1.5 var(--font-sans); color: var(--accent); }
+.cover { margin-top: 24px; } .cover svg { display: block; width: 100%; height: auto; }
+.c-accent { fill: var(--accent); } .c-ink { fill: var(--ink); } .c-draft { fill: var(--draft-ink); } .c-tint { fill: var(--accent-tint); } .c-ring { fill: none; stroke: var(--on-accent); stroke-width: 2.5; } .c-soft { fill: var(--accent-soft-on-accent); } .c-lens { fill: var(--on-accent); } .c-rule { stroke: var(--line-strong); stroke-width: 1; }
+</style>
+<header><img src="../resources/design-system/assets/Logos/authoritative-software-mark.svg" alt="">Authoritative Software</header>
+<div class="cover"><svg width="960" height="112" viewBox="0 0 960 112" aria-hidden="true">
+    <!-- blocks: accent 416×112, ink 144×112, accent-tint 288×112, draft-ink 112×112 (sides = space-16 multiples and steps) -->
+    <!-- arrangement: a full-width strip of unequal bands across the top (top-band skeleton: the name is too wide for its zone) -->
+    <!-- pattern: literal motif, the asymmetric-pair mark on the accent slab (outlined operator circle in on-accent, accent-soft-on-accent consumer disc, lens in on-accent), plus four hairline rules in line-strong across accent-tint; chosen because "the overlap is authority" and the README's "borders, not shadows" -->
+    <!-- scales: radius-0 corners, circle r = space-12, rule pitch = space-4, circle offset = space-12 -->
+    <rect class="c-accent" x="0" y="0" width="416" height="112"/>
+    <circle class="c-soft" cx="232" cy="56" r="48"/>
+    <circle class="c-ring" cx="184" cy="56" r="48"/>
+    <path class="c-lens" d="M208 14.43 A48 48 0 0 1 208 97.57 A48 48 0 0 1 208 14.43 Z"/>
+    <rect class="c-ink" x="416" y="0" width="144" height="112"/>
+    <rect class="c-tint" x="560" y="0" width="288" height="112"/>
+    <line class="c-rule" x1="560" y1="32" x2="848" y2="32"/>
+    <line class="c-rule" x1="560" y1="48" x2="848" y2="48"/>
+    <line class="c-rule" x1="560" y1="64" x2="848" y2="64"/>
+    <line class="c-rule" x1="560" y1="80" x2="848" y2="80"/>
+    <rect class="c-draft" x="848" y="0" width="112" height="112"/>
+  </svg></div>
+<h1>Who stands behind<br><em>this software?</em></h1>
+<p>Explicit claims. Evidence. Consumer decisions.<br>Draft proposal · AUTHORITY.md 0.1.0</p>
+</html>

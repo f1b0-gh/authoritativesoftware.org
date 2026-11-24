@@ -1,0 +1,35 @@
+<!-- @dsCard height=288 -->
+<div class="as-cover">
+  <style>
+    .as-cover{position:relative;width:960px;height:288px;background:var(--paper);overflow:hidden;font-family:var(--font-serif)}
+    .as-cover svg{position:absolute;left:0;top:0}
+    .c-accent{fill:var(--accent)} .c-ink{fill:var(--ink)} .c-draft{fill:var(--draft-ink)} .c-tint{fill:var(--accent-tint)}
+    .c-ring{fill:none;stroke:var(--on-accent);stroke-width:2.5}
+    .c-soft{fill:var(--accent-soft-on-accent)} .c-lens{fill:var(--on-accent)}
+    .c-rule{stroke:var(--line-strong);stroke-width:1}
+    .as-cover__text{position:absolute;left:40px;bottom:32px;max-width:880px}
+    .as-cover h1{margin:0;font-family:var(--font-serif);font-weight:400;font-size:64px;line-height:.95;letter-spacing:-.04em;color:var(--ink)}
+    .as-cover p{margin:16px 0 0;font-family:var(--font-sans);font-size:14px;color:var(--ink-muted)}
+  </style>
+  <svg width="960" height="112" viewBox="0 0 960 112" aria-hidden="true">
+    <!-- blocks: accent 416×112, ink 144×112, accent-tint 288×112, draft-ink 112×112 (sides = space-16 multiples and steps) -->
+    <!-- arrangement: a full-width strip of unequal bands across the top (top-band skeleton: the name is too wide for its zone) -->
+    <!-- pattern: literal motif, the asymmetric-pair mark on the accent slab (outlined operator circle in on-accent, accent-soft-on-accent consumer disc, lens in on-accent), plus four hairline rules in line-strong across accent-tint; chosen because "the overlap is authority" and the README's "borders, not shadows" -->
+    <!-- scales: radius-0 corners, circle r = space-12, rule pitch = space-4, circle offset = space-12 -->
+    <rect class="c-accent" x="0" y="0" width="416" height="112"/>
+    <circle class="c-soft" cx="232" cy="56" r="48"/>
+    <circle class="c-ring" cx="184" cy="56" r="48"/>
+    <path class="c-lens" d="M208 14.43 A48 48 0 0 1 208 97.57 A48 48 0 0 1 208 14.43 Z"/>
+    <rect class="c-ink" x="416" y="0" width="144" height="112"/>
+    <rect class="c-tint" x="560" y="0" width="288" height="112"/>
+    <line class="c-rule" x1="560" y1="32" x2="848" y2="32"/>
+    <line class="c-rule" x1="560" y1="48" x2="848" y2="48"/>
+    <line class="c-rule" x1="560" y1="64" x2="848" y2="64"/>
+    <line class="c-rule" x1="560" y1="80" x2="848" y2="80"/>
+    <rect class="c-draft" x="848" y="0" width="112" height="112"/>
+  </svg>
+  <div class="as-cover__text">
+    <h1>Authoritative Software</h1>
+    <p>Who says what, what supports it, and what you choose to rely on.</p>
+  </div>
+</div>

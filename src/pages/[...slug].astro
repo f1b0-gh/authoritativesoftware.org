@@ -1,0 +1,50 @@
+---
+import { sitePath, base } from '../../site.config.mjs';
+import { loadSite } from '@astrokjs/okf/site';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import Layout from '../layouts/Layout.astro';
+import StatusBanner from '../components/StatusBanner.astro';
+import { documentPresentation } from '../lib/document-presentation.mjs';
+import { keyboardScroll } from '../lib/keyboard-scroll.mjs';
+import { version } from '../../source-provenance.json';
+import { readingPages, pagePath } from '../lib/pages.mjs';
+
+export async function getStaticPaths() {
+  const { documents } = await loadSite({ root: 'docs', base });
+  return Promise.all(documents.filter(document => document.id !== 'index').map(async document => {
+    const markdown = await createMarkdownProcessor({ shikiConfig: { theme: 'github-light' }, rehypePlugins: [keyboardScroll, [documentPresentation, { declaration: document.id === 'declaration', declarationUrl: sitePath('/declaration/') }]] });
+    // StatusBanner carries these metadata lines in the HTML; keep them in the download.
+    const body = document.id === 'declaration'
+      ? document.body.replace(/^\*\*(?:Version [^*]+|Draft updated: [^*]+)\*\*\n+/gm, '').replace(/^\*\*Status: draft\.\*\* /m, '')
+      : document.body;
+    const rendered = await markdown.render(body);
+    return { params: { slug: document.id }, props: { document, html: rendered.code, headings: rendered.metadata.headings } };
+  }));
+}
+const { document, html, headings } = Astro.props;
+const declaration = document.id === 'declaration';
+const next = readingPages[(readingPages.findIndex(page => page.id === document.id) + 1) % readingPages.length];
+---
+<Layout title={document.title} description={document.description ?? 'Learn about the Authoritative Software proposal.'}>
+  <div class="reading-shell shell">
+    <aside class="reading-sidebar" aria-label="Reading navigation">
+      <p class="eyebrow">Explore the proposal</p>
+      <nav aria-label="Reading path">{readingPages.map(({ id, label }) => <a href={sitePath(pagePath(id))} aria-current={id === document.id ? 'page' : undefined}>{label}</a>)}</nav>
+      <div class="on-this-page"><p class="eyebrow">On this page</p><nav aria-label="On this page">{headings.filter((heading: {depth: number}) => heading.depth === 2).map((heading: {slug: string; text: string}) => <a href={`#${heading.slug}`}>{heading.text}</a>)}</nav></div>
+    </aside>
+    <div class="reading-main">
+      <div class="article-meta"><span class="eyebrow">{declaration ? `Declaration · version ${version}` : document.type === 'Guide' ? 'Practical guidance' : 'The proposal, explained'}</span><a href={document.sourceUrl}>Read Markdown</a></div>
+      <article class:list={['prose', { 'declaration-text': declaration }]}>
+        <h1>{document.title}</h1>
+        {declaration && <StatusBanner />}
+        {declaration && <aside class="as-provision as-provision--explanation editorial-note">
+          <div class="as-provision__label">Explanation</div>
+          <p>This is the declaration text. The guides explain its purpose and use.</p>
+          <p><a href={sitePath('/AUTHORITY.md')} download="AUTHORITY.md">Download AUTHORITY.md</a> · <a href={sitePath('/declaration-integrity.json')}>Integrity record</a></p>
+        </aside>}
+        <div class="document-body" set:html={html.replace(/^<h1\b[^>]*>[\s\S]*?<\/h1>\s*/, '')} />
+      </article>
+      <div class="reading-next"><span class="small-label">Continue reading</span><a href={sitePath(pagePath(next.id))}>{next.label}</a></div>
+    </div>
+  </div>
+</Layout>

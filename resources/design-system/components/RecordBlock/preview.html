@@ -1,0 +1,24 @@
+<!-- @dsCard group="Records" height=720 subtitle="Statement, finding, decision" -->
+<div class="as-root" style="padding:24px;display:grid;gap:20px">
+  <article class="as-record as-record--statement">
+    <header class="as-record__head"><span class="as-record__kind">Statement</span><span class="as-record__who">Example Operator · operator</span></header>
+    <div class="as-record__body">
+      <p>“We will maintain the Linux build of example-package 1.4.2 through 31 December 2026, including security fixes.”</p>
+      <dl class="as-record__meta"><dt>Artifact</dt><dd>sha256:9f86d0…0f00a08</dd><dt>Issued</dt><dd>2026-11-01</dd><dt>Expires</dt><dd>2026-12-01</dd></dl>
+    </div>
+  </article>
+  <article class="as-record as-record--finding">
+    <header class="as-record__head"><span class="as-record__kind">Finding</span><span class="as-record__who">Research team · assessed 2026-12-03</span></header>
+    <div class="as-record__body">
+      <p>The statement's own period has ended. The supplied archive matches the digest.</p>
+      <div class="as-record__labels"><span class="as-finding"><span class="as-finding__glyph" aria-hidden="true">●</span>Origin established</span><span class="as-finding as-finding--expired"><span class="as-finding__glyph" aria-hidden="true">⏱</span>Expired</span></div>
+    </div>
+  </article>
+  <article class="as-record as-record--decision">
+    <header class="as-record__head"><span class="as-record__kind">Decision</span><span class="as-record__who">Research team · research use</span></header>
+    <div class="as-record__body">
+      <p><span class="as-record__verdict">Accept</span> origin for research use. We maintain our own copy and don't rely on the maintenance statement.</p>
+      <dl class="as-record__meta"><dt>Reconsider</dt><dd>on a new release or withdrawal</dd></dl>
+    </div>
+  </article>
+</div>

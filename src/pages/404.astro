@@ -1,0 +1,5 @@
+---
+import { sitePath } from '../../site.config.mjs';
+import Layout from '../layouts/Layout.astro';
+---
+<Layout noindex title="Page not found" description="Find your way back to the Authoritative Software proposal."><section class="shell not-found"><p class="eyebrow">404 · Page not found</p><h1>This page isn't here.</h1><p>Start with the idea, or go straight to the declaration.</p><div class="actions"><a class="as-button as-button--primary" href={sitePath('/')}>Back to the introduction</a><a href={sitePath('/declaration/')}>Read the declaration</a></div></section></Layout>

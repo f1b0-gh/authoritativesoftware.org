@@ -1,0 +1,9 @@
+---
+interface Props { kind: 'statement' | 'finding' | 'decision'; who: string }
+const { kind, who } = Astro.props;
+const labels = { statement: 'Operator statement', finding: 'Evaluation findings', decision: 'Consumer decision' };
+---
+<section class={`as-record as-record--${kind}`} aria-label={labels[kind]}>
+  <header class="as-record__head"><strong class="as-record__kind">{labels[kind]}</strong><span class="as-record__who">{who}</span></header>
+  <div class="as-record__body"><slot /></div>
+</section>

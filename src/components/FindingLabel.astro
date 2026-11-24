@@ -1,0 +1,7 @@
+---
+interface Props { kind: 'within-period' | 'expired' | 'conflict' | 'unanswered' }
+const { kind } = Astro.props;
+const labels = { 'within-period': ['◐', 'Within stated period'], expired: ['⏱', 'Expired'], conflict: ['▲', 'Conflicting evidence'], unanswered: ['○', 'Unanswered'] };
+const [glyph, label] = labels[kind];
+---
+<span class={`as-finding as-finding--${kind}`}><span class="as-finding__glyph" aria-hidden="true">{glyph}</span>{label}</span>

@@ -1,0 +1,20 @@
+---
+import cover from '../../resources/design-system/components/Cover/preview.html?raw';
+// Reuse the supplied artwork verbatim; layout and palette remain responsive.
+const artwork = cover.match(/<svg\b[\s\S]*?<\/svg>/)?.[0];
+if (!artwork) throw new Error('Design-system cover artwork is missing.');
+---
+<div class="brand-band" aria-hidden="true" set:html={artwork} />
+<style is:global>
+  .brand-band { width: 100%; overflow: hidden; }
+  .brand-band svg { display: block; width: 100%; height: auto; }
+  .brand-band .c-accent { fill: var(--accent); }
+  .brand-band .c-ink { fill: var(--ink); }
+  .brand-band .c-draft { fill: var(--draft-ink); }
+  .brand-band .c-tint { fill: var(--accent-tint); }
+  .brand-band .c-ring { fill: none; stroke: var(--on-accent); stroke-width: 2.5; }
+  .brand-band .c-soft { fill: var(--accent-soft-on-accent); }
+  .brand-band .c-lens { fill: var(--on-accent); }
+  .brand-band .c-rule { stroke: var(--line-strong); stroke-width: 1; }
+  @media print { .brand-band { display: none; } }
+</style>

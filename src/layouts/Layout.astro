@@ -1,0 +1,71 @@
+---
+import { sitePath, siteHref } from '../../site.config.mjs';
+import '../styles/global.css';
+import BrandMark from '../components/BrandMark.astro';
+import { version as websiteVersion } from '../../package.json';
+import { version as declarationVersion } from '../../source-provenance.json';
+import { pages, pagePath } from '../lib/pages.mjs';
+interface Props { title: string; description: string; home?: boolean; noindex?: boolean }
+const { title, description, home = false, noindex = false } = Astro.props;
+const path = Astro.url.pathname;
+const nav = pages.filter(page => page.main);
+const pageTitle = home ? 'Authoritative Software — Explicitly asserted, independently evaluated' : `${title} — Authoritative Software`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2447dc" />
+    {!noindex && <link rel="canonical" href={new URL(path, Astro.site)} />}
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/svg+xml" sizes="16x16 32x32" href={sitePath('/favicon.svg')} />
+    <link rel="icon" type="image/svg+xml" sizes="64x64" href={sitePath('/app-icon.svg')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Authoritative Software" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={siteHref('social.png')} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Authoritative Software: Who stands behind this software?" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={new URL(path, Astro.site)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="brand" href={sitePath('/')} aria-label="Authoritative Software home">
+        <BrandMark /><span>Authoritative Software</span>
+      </a>
+      <nav aria-label="Main navigation">
+        {nav.map(({ id, label }) => <a href={sitePath(pagePath(id))} aria-current={path === sitePath(pagePath(id)) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <script>
+      import { refreshExampleDates } from '../lib/example-dates';
+      if (document.querySelector('[data-example-date]')) {
+        refreshExampleDates();
+        window.addEventListener('focus', refreshExampleDates);
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) refreshExampleDates();
+        });
+        window.setInterval(refreshExampleDates, 60_000);
+      }
+    </script>
+    <footer class="site-footer shell">
+      <div><a class="brand footer-name" href={sitePath('/')}><BrandMark /><span>Authoritative Software</span></a><p>Software authority, explicitly asserted, independently evaluated.</p></div>
+      <nav aria-label="Footer navigation">
+        <a href={sitePath('/about/')}>About the proposal</a>
+        <a href={sitePath('/examples/')}>Examples</a>
+        <a href={sitePath('/okf/manifest.json')}>Source manifest</a>
+        <a href={sitePath('/llms.txt')}>For agents</a>
+      </nav>
+      <div class="footer-bottom"><span>Draft proposal · AUTHORITY.md {declarationVersion} · Website {websiteVersion}</span><a href={sitePath('/AUTHORITY.md')} download="AUTHORITY.md">Download the declaration</a></div>
+    </footer>
+  </body>
+</html>

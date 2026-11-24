@@ -1,0 +1,10 @@
+---
+import { version, updated } from '../../source-provenance.json';
+import { sitePath } from '../../site.config.mjs';
+const date = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(updated));
+---
+<div class="as-status" role="note" aria-label="Declaration status">
+  <strong>Draft</strong><span class="as-mono">AUTHORITY.md {version}</span>
+  <span>Updated <time datetime={updated}>{date}</time></span>
+  <a href={sitePath('/about/#versions-and-integrity')}>About this draft</a>
+</div>

@@ -1,0 +1,136 @@
+{
+  "manifestVersion": 3,
+  "name": "Authoritative Software Design System",
+  "namespace": "AuthoritativeSoftware",
+  "files": [
+    "assets/Logos/README.md",
+    "components/Button/README.md",
+    "components/DefinedTerm/README.md",
+    "components/EditionChange/README.md",
+    "components/FindingLabel/README.md",
+    "components/ProvisionMarker/README.md",
+    "components/RecordBlock/README.md",
+    "components/StatusBanner/README.md",
+    "components/bundle.css",
+    "tokens.css"
+  ],
+  "libraries": [],
+  "components": [
+    {
+      "name": "Button",
+      "group": "Actions",
+      "summary": "Square, 48px-tall actions, nearly always links to a reading page."
+    },
+    {
+      "name": "DefinedTerm",
+      "group": "Document",
+      "summary": "Links a defined word back to its definition in the declaration, with a dotted underline that reads as \"defined term\" rather than \"external link\"."
+    },
+    {
+      "name": "EditionChange",
+      "group": "Document",
+      "summary": "Shows exactly what changed in one provision between two editions of the declaration, with the reason."
+    },
+    {
+      "name": "FindingLabel",
+      "group": "Records",
+      "summary": "A compact label for one finding about a claim."
+    },
+    {
+      "name": "ProvisionMarker",
+      "group": "Document",
+      "summary": "Marks a block as declaration text (normative) or as explanation, so a reader never mistakes commentary for a requirement."
+    },
+    {
+      "name": "RecordBlock",
+      "group": "Records",
+      "summary": "Three containers, for a statement (what an operator says), a finding (what an assessment found) and a decision (what a consumer chooses to rely on)."
+    },
+    {
+      "name": "StatusBanner",
+      "group": "Document",
+      "summary": "Shows the declaration's status, version, publication date and a link to what changed, at the top of every declaration surface."
+    }
+  ],
+  "assetGroups": [
+    {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "authoritative-software-mark.svg",
+        "authoritative-software-mark-dark.svg",
+        "authoritative-software-app-icon.svg",
+        "favicon.svg",
+        "social-card.png",
+        "previous-two-circles.svg"
+      ],
+      "files": [
+        {
+          "path": "assets/Logos/authoritative-software-mark.svg",
+          "id": "1b45d5c6d4703bded03440f22d665507"
+        },
+        {
+          "path": "assets/Logos/authoritative-software-mark-dark.svg",
+          "id": "7e589f3195521fd766f14cd271b98100"
+        },
+        {
+          "path": "assets/Logos/authoritative-software-app-icon.svg",
+          "id": "0d764ff24023ab79d288e3c57811f881"
+        },
+        {
+          "path": "assets/Logos/favicon.svg",
+          "id": "dfbbb479baa0d5c35353c7357d267992"
+        },
+        {
+          "path": "assets/Logos/social-card.png",
+          "id": "19b344400ef98bca146e2b61ad4eeb55"
+        },
+        {
+          "path": "assets/Logos/previous-two-circles.svg",
+          "id": "33cb1f91d3b5dafbb3809db19ee17f13"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "files": {
+      "assets/Logos/authoritative-software-app-icon.svg": {
+        "store": "blob",
+        "id": "0d764ff24023ab79d288e3c57811f881",
+        "bytes": 444,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/authoritative-software-mark-dark.svg": {
+        "store": "blob",
+        "id": "7e589f3195521fd766f14cd271b98100",
+        "bytes": 368,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/authoritative-software-mark.svg": {
+        "store": "blob",
+        "id": "1b45d5c6d4703bded03440f22d665507",
+        "bytes": 368,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/favicon.svg": {
+        "store": "blob",
+        "id": "dfbbb479baa0d5c35353c7357d267992",
+        "bytes": 446,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/previous-two-circles.svg": {
+        "store": "blob",
+        "id": "33cb1f91d3b5dafbb3809db19ee17f13",
+        "bytes": 256,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/social-card.png": {
+        "store": "blob",
+        "id": "19b344400ef98bca146e2b61ad4eeb55",
+        "bytes": 51330,
+        "type": "image/png"
+      }
+    },
+    "blobBytesUsed": 53212
+  }
+}
